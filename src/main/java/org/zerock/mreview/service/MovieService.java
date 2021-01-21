@@ -16,8 +16,11 @@ public interface MovieService {
     // 영화 등록
     Long register(MovieDTO movieDTO);
 
-    //목록 처리
+    // 목록 처리
     PageResultDTO<MovieDTO, Object[]> getList(PageRequestDTO requestDTO);
+
+    // 영화 조회
+    MovieDTO getMovie(Long mno);
 
     default MovieDTO entitiesToDTO(Movie movie, List<MovieImage> movieImages, Double avg, Long reviewCnt){
         MovieDTO movieDTO = MovieDTO.builder()
@@ -37,6 +40,8 @@ public interface MovieService {
         movieDTO.setImageDTOList(movieImageDTOList);
         movieDTO.setAvg(avg);
         movieDTO.setReviewCnt(reviewCnt.intValue());
+
+
 
         return movieDTO;
 
